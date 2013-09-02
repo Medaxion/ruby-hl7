@@ -2,7 +2,7 @@
 require 'ruby-hl7'
 class HL7::Message::Segment::OBR < HL7::Message::Segment
   weight 89 # obx.weight-1
-  has_children [:NTE,:OBX,:ORC,:SPM]
+  has_children [:NTE,:OBX,:SPM]
   add_field :set_id
   add_field :placer_order_number
   add_field :filler_order_number

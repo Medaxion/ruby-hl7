@@ -12,10 +12,20 @@ describe HL7::Message do
       msg.should_not be_nil
       msg[:OBR].should_not be_nil
       msg[:OBR].length.should == 3
-      msg[:OBR].first.children.should_not be_nil
-      msg[:OBR].first.children.length.should == 5
+      msg[:OBR][0].children.should_not be_nil
+      msg[:OBR][0].children.length.should == 5
+      msg[:OBR][1].children.should_not be_nil
+      msg[:OBR][1].children.length.should == 3
+      msg[:OBR][2].children.should_not be_nil
+      msg[:OBR][2].children.length.should == 1
 
-      msg[:OBR].first.children.each do |x|
+      msg[:OBR][0].children.each do |x|
+        x.should_not be_nil
+      end
+      msg[:OBR][1].children.each do |x|
+        x.should_not be_nil
+      end
+      msg[:OBR][2].children.each do |x|
         x.should_not be_nil
       end
     end

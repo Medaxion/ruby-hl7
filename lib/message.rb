@@ -238,6 +238,13 @@ class HL7::Message
       new_seg.is_child_segment = true
 
       last_seg
+    elsif last_seg && last_seg.has_children? && last_seg.children.last &&
+          last_seg.children.last.has_children? && last_seg.children.last.accepts?( seg_name )
+      last_seg_child = last_seg.children.last
+      last_seg_child.children << new_seg
+      new_seg.is_child_segment = true
+
+      last_seg
     else
       @segments << new_seg
       setup_segment_lookup_by_name( seg_name, new_seg)
